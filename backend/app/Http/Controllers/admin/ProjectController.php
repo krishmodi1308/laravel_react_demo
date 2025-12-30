@@ -3,24 +3,25 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use App\Models\TempImage;
 use Illuminate\Http\Request;
-use App\Models\Service;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
 
-class ServiceController extends Controller
+class ProjectController extends Controller
 {
+    // This method will return all projects
     public function index()
     {
-        $services = Service::orderBy('created_at', 'desc')->get();
+        $projects = Project::orderBy('created_at', 'desc')->get();
 
         return response()->json([
             'status' => true,
-            'data' => $services
+            'data' => $projects
         ]);
     }
 
@@ -29,23 +30,26 @@ class ServiceController extends Controller
         $request->merge(['slug' => Str::slug($request->slug)]);
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'slug' => 'required|unique:services,slug',
+            'slug' => 'required|unique:projects,slug',
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json([
                 'status' => false,
-                'errors' => $validator->errors()
+                'errors' => $validator->errors(),
             ]);
         }
 
-        $model = new Service();
-        $model->title = $request->title;
-        $model->short_desc = $request->short_desc;
-        $model->slug = Str::slug($request->slug);
-        $model->content = $request->content;
-        $model->status = $request->status;
-        $model->save();
+        $project = new Project();
+        $project->title = $request->title;
+        $project->slug = Str::slug($request->slug);
+        $project->short_desc = $request->short_desc;
+        $project->content = $request->content;
+        $project->construction_type = $request->construction_type;
+        $project->sector = $request->sector;
+        $project->location = $request->location;
+        $project->status = $request->status;
+        $project->save();
 
         if($request->imageId > 0) {
             $tempImage = TempImage::find($request->imageId);
@@ -53,17 +57,17 @@ class ServiceController extends Controller
                 $extArray = explode('.', $tempImage->name);
                 $ext = end($extArray);
 
-                $fileName = strtotime('now').$model->id . '.' . $ext;
+                $fileName = strtotime('now').$project->id . '.' . $ext;
 
                 $originalDir = public_path('uploads/temp');
                 if (!file_exists($originalDir)) {
                     mkdir($originalDir, 0755, true);
                 }
-                $thumbDir = public_path('uploads/services/small');
+                $thumbDir = public_path('uploads/projects/small');
                 if (!file_exists($thumbDir)) {
                     mkdir($thumbDir, 0755, true);
                 }
-                $largeDir = public_path('uploads/services/large');
+                $largeDir = public_path('uploads/projects/large');
                 if (!file_exists($largeDir)) {
                     mkdir($largeDir, 0755, true);
                 }
@@ -81,49 +85,49 @@ class ServiceController extends Controller
                 $image->scaleDown(1200);
                 $image->save($destPath);
 
-                $model->image = $fileName;
-                $model->save();
+                $project->image = $fileName;
+                $project->save();
             }
         }
 
         return response()->json([
             'status' => true,
-            'message' => 'Service created successfully!'
+            'message' => 'Project added successfully!',
         ]);
     }
 
     public function show($id)
     {
-        $service = Service::find($id);
+        $project = Project::find($id);
 
-        if($service == null){
+        if($project == null){
             return response()->json([
                 'status' => false,
-                'message' => 'Service not found!'
+                'message' => 'Project not found!'
             ]);
         }
 
         return response()->json([
             'status' => true,
-            'data' => $service
+            'data' => $project
         ]);
     }
 
     public function update(Request $request, $id)
     {
-        $service = Service::find($id);
+        $project = Project::find($id);
 
-        if($service == null){
+        if($project == null){
             return response()->json([
                 'status' => false,
-                'message' => 'Service not found!'
+                'message' => 'Project not found!'
             ]);
         }
 
         $request->merge(['slug' => Str::slug($request->slug)]);
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'slug' => 'required|unique:services,slug,'.$id.',id'
+            'slug' => 'required|unique:projects,slug,'.$id.',id'
         ]);
 
         if($validator->fails()){
@@ -133,31 +137,31 @@ class ServiceController extends Controller
             ]);
         }
 
-        $service->title = $request->title;
-        $service->short_desc = $request->short_desc;
-        $service->slug = Str::slug($request->slug);
-        $service->content = $request->content;
-        $service->status = $request->status;
-        $service->save();
+        $project->title = $request->title;
+        $project->short_desc = $request->short_desc;
+        $project->slug = Str::slug($request->slug);
+        $project->content = $request->content;
+        $project->status = $request->status;
+        $project->save();
 
         if($request->imageId > 0) {
-            $oldImage = $service->image;
+            $oldImage = $project->image;
             $tempImage = TempImage::find($request->imageId);
             if($tempImage != null) {
                 $extArray = explode('.', $tempImage->name);
                 $ext = end($extArray);
 
-                $fileName = strtotime('now').$service->id . '.' . $ext;
+                $fileName = strtotime('now').$project->id . '.' . $ext;
 
                 $originalDir = public_path('uploads/temp');
                 if (!file_exists($originalDir)) {
                     mkdir($originalDir, 0755, true);
                 }
-                $thumbDir = public_path('uploads/services/small');
+                $thumbDir = public_path('uploads/projects/small');
                 if (!file_exists($thumbDir)) {
                     mkdir($thumbDir, 0755, true);
                 }
-                $largeDir = public_path('uploads/services/large');
+                $largeDir = public_path('uploads/projects/large');
                 if (!file_exists($largeDir)) {
                     mkdir($largeDir, 0755, true);
                 }
@@ -175,8 +179,8 @@ class ServiceController extends Controller
                 $image->scaleDown(1200);
                 $image->save($destPath);
 
-                $service->image = $fileName;
-                $service->save();
+                $project->image = $fileName;
+                $project->save();
 
                 if($oldImage != null) {
                     File::delete($largeDir . '/' . $oldImage);
@@ -187,26 +191,26 @@ class ServiceController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Service updated successfully!'
+            'message' => 'Project updated successfully!'
         ]);
     }
 
     public function destroy($id)
     {
-        $service = Service::find($id);
+        $project = Project::find($id);
 
-        if($service == null){
+        if($project == null){
             return response()->json([
                 'status' => false,
-                'message' => 'Service not found!'
+                'message' => 'Project not found!'
             ]);
         }
 
-        $service->delete();
+        $project->delete();
 
         return response()->json([
             'status' => true,
-            'message' => 'Service deleted successfully!'
+            'message' => 'Project deleted successfully!'
         ]);
     }
 }

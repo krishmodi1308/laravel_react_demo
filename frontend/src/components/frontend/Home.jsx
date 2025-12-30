@@ -13,6 +13,7 @@ import AvatarImg from '../../assets/images/author-2.jpg';
 import {Pagination} from 'swiper/modules';
 import About from "../common/About.jsx";
 import LatestServices from "../common/LatestServices.jsx";
+import LatestProjects from "../common/LatestProjects.jsx";
 
 
 const Home = () => {
@@ -92,85 +93,7 @@ const Home = () => {
                 </section>
 
                 {/* Our project Section */}
-                <section className='section-3 bg-light py-5'>
-                    <div className='container-fluid py-5'>
-                        <div className='section-header text-center'>
-                            <span>our projects</span>
-                            <h2>Discover our diverse range of projects</h2>
-                            <p>We offer a diverse array of construction services, spanning residential, commercial, and industrial projects.</p>
-                        </div>
-                        <div className='row pt-4'>
-                            <div className='col-md-3 col-lg-3'>
-                                <div className='item'>
-                                    <div className='service-image'>
-                                        <img src={constructionImg} alt="" className='w-100'/>
-                                    </div>
-                                    <div className='service-body'>
-                                        <div className='service-title'>
-                                            <h3>Kolkata Project</h3>
-                                        </div>
-                                        <div className='service-content'>
-                                            <p>Building construction is a broad and essential sector within the construction industry that focuses on the creation of structures designed for human occupancy and use.</p>
-                                            <a href='#' className='btn btn-primary small'>Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className='col-md-3 col-lg-3'>
-                                <div className='item'>
-                                    <div className='service-image'>
-                                        <img src={constructionImg} alt="" className='w-100'/>
-                                    </div>
-                                    <div className='service-body'>
-                                        <div className='service-title'>
-                                            <h3>Kolkata Project</h3>
-                                        </div>
-                                        <div className='service-content'>
-                                            <p>Building construction is a broad and essential sector within the construction industry that focuses on the creation of structures designed for human occupancy and use.</p>
-                                            <a href='#' className='btn btn-primary small'>Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className='col-md-3 col-lg-3'>
-                                <div className='item'>
-                                    <div className='service-image'>
-                                        <img src={constructionImg} alt="" className='w-100'/>
-                                    </div>
-                                    <div className='service-body'>
-                                        <div className='service-title'>
-                                            <h3>Kolkata Project</h3>
-                                        </div>
-                                        <div className='service-content'>
-                                            <p>Building construction is a broad and essential sector within the construction industry that focuses on the creation of structures designed for human occupancy and use.</p>
-                                            <a href='#' className='btn btn-primary small'>Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className='col-md-3 col-lg-3'>
-                                <div className='item'>
-                                    <div className='service-image'>
-                                        <img src={constructionImg} alt="" className='w-100'/>
-                                    </div>
-                                    <div className='service-body'>
-                                        <div className='service-title'>
-                                            <h3>Kolkata Project</h3>
-                                        </div>
-                                        <div className='service-content'>
-                                            <p>Building construction is a broad and essential sector within the construction industry that focuses on the creation of structures designed for human occupancy and use.</p>
-                                            <a href='#' className='btn btn-primary small'>Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <LatestProjects/>
 
                 <section className='section-5 py-5'>
                     <div className='container py-5'>
