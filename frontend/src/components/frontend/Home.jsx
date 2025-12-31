@@ -14,6 +14,7 @@ import {Pagination} from 'swiper/modules';
 import About from "../common/About.jsx";
 import LatestServices from "../common/LatestServices.jsx";
 import LatestProjects from "../common/LatestProjects.jsx";
+import LatestArticles from "../common/LatestArticles.jsx";
 
 
 const Home = () => {
@@ -304,56 +305,7 @@ const Home = () => {
                     </div>
                 </section>
 
-                <section className='section-6 bg-light py-5'>
-                    <div className='container'>
-                        <div className='section-header text-center'>
-                            <span>Blog & News</span>
-                            <h2>Articles & blog posts</h2>
-                            <p>We offer a diverse array of construction services, spanning residential, commercial, and industrial projects.</p>
-                        </div>
-                        <div className='row pt-3'>
-                            <div className='col-md-4'>
-                                <div className='card shadow border-0'>
-                                    <div className='card-img-top'>
-                                        <img src={BlogImg} className='w-100'/>
-                                    </div>
-                                    <div className='card-body p-4'>
-                                        <div className='mb-3'>
-                                            <a href='#' className='title'>Dummy blog title</a>
-                                        </div>
-                                        <a href='#' className='btn btn-primary small'>read more</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='col-md-4'>
-                                <div className='card shadow border-0'>
-                                    <div className='card-img-top'>
-                                        <img src={BlogImg} className='w-100'/>
-                                    </div>
-                                    <div className='card-body p-4'>
-                                        <div className='mb-3'>
-                                            <a href='#' className='title'>Dummy blog title</a>
-                                        </div>
-                                        <a href='#' className='btn btn-primary small'>read more</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='col-md-4'>
-                                <div className='card shadow border-0'>
-                                    <div className='card-img-top'>
-                                        <img src={BlogImg} className='w-100'/>
-                                    </div>
-                                    <div className='card-body p-4'>
-                                        <div className='mb-3'>
-                                            <a href='#' className='title'>Dummy blog title</a>
-                                        </div>
-                                        <a href='#' className='btn btn-primary small'>read more</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <LatestArticles/>
             </main>
             <Footer/>
         </>
