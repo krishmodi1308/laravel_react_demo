@@ -334,7 +334,10 @@ footer {
 .section-5 {
   .card-body {
     padding: 2rem;
-
+    img {
+      border-radius: 1.80rem;
+      display: block;
+    }
     @include respond-max($sm) {
       padding: 1.5rem;
     }
@@ -352,6 +355,16 @@ footer {
       a.title{
         font-size: 1.4em;
       }
+    }
+  }
+}
+
+.section-8{
+  .card{
+    border-radius: 40px;
+    img{
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
     }
   }
 }
