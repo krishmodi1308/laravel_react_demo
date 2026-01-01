@@ -4,6 +4,7 @@ import Footer from "../common/Footer.jsx";
 import {default as AboutNew} from "../common/About.jsx";
 import MemberImg from "../../assets/images/pexels-sindre-fs-1040880.jpg";
 import Hero from "../common/Hero.jsx";
+import Testimonials from "../common/Testimonials.jsx";
 
 const About = () => {
     return (
@@ -115,6 +116,8 @@ const About = () => {
                         </div>
                     </div>
                 </section>
+
+                <Testimonials/>
             </main>
             <Footer/>
         </>
