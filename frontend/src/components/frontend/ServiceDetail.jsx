@@ -51,7 +51,7 @@ const ServiceDetail = () => {
                                                 services && services.map(service => {
                                                     return (
                                                         <li key={service.id}>
-                                                            <Link to={`/service/${service.id}`}>{service.title}</Link>
+                                                            <Link to={`/service/${service.slug}`}>{service.title}</Link>
                                                         </li>
                                                     )
                                                 })

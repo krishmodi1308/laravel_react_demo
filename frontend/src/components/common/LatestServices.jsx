@@ -41,7 +41,7 @@ const LatestServices = () => {
                                             </div>
                                             <div className='service-content'>
                                                 <p>{service.short_desc}</p>
-                                                <Link to={`/service/${service.id}`} className='btn btn-primary small'>Read More</Link>
+                                                <Link to={`/service/${service.slug}`} className='btn btn-primary small'>Read More</Link>
                                             </div>
                                         </div>
                                     </div>
