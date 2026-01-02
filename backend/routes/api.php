@@ -6,6 +6,7 @@ use App\Http\Controllers\front\ProjectController as FrontProjectController;
 use App\Http\Controllers\front\ArticleController as FrontArticleController;
 use App\Http\Controllers\front\TestimonialController as FrontTestimonialController;
 use App\Http\Controllers\front\MemberController as FrontMemberController;
+use App\Http\Controllers\front\ContactController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
@@ -32,6 +33,8 @@ Route::get('get-article/{slug}', [FrontArticleController::class, 'article']);
 
 Route::get('get-testimonials', [FrontTestimonialController::class, 'index']);
 Route::get('get-members', [FrontMemberController::class, 'index']);
+
+Route::post('contact-now', [ContactController::class, 'index']);
 
 //Route::get('/user', function (Request $request) {
 //    return $request->user();
