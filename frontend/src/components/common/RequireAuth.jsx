@@ -1,15 +1,14 @@
-import React, {useContext} from 'react';
-import {AuthContext} from '../backend/context/Auth.jsx';
-import {Navigate} from 'react-router-dom';
+import { useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
 
-const RequireAuth = ({children}) => {
-    const {user} = useContext(AuthContext);
+const RequireAuth = ({ children }) => {
+    const user = useSelector(state => state.auth.user)
 
-    if(!user) {
-        return <Navigate to='/admin/login' />
+    if (!user) {
+        return <Navigate to="/admin/login" replace />
     }
 
-    return children;
+    return children
 }
 
 export default RequireAuth

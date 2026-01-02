@@ -1,9 +1,17 @@
-import React, {useContext} from "react";
-import {AuthContext} from "../backend/context/Auth.jsx";
-import {Link} from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/slices/authSlice";
 
 const Sidebar = () => {
-    const {logout} = useContext(AuthContext);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        dispatch(logout());
+        navigate('/admin/login');
+    };
+
     return (
         <div className='card shadow border-0 mb-3'>
             <div className='card-body p-4 sidebar'>
@@ -15,11 +23,14 @@ const Sidebar = () => {
                     <li><Link to='/admin/projects'>Projects</Link></li>
                     <li><Link to='/admin/testimonials'>Testimonials</Link></li>
                     <li><Link to='/admin/members'>Members</Link></li>
-                    <li><button onClick={logout} className='btn btn-primary mt-4'>Logout</button></li>
+
+                    <li>
+                        <button type="button" onClick={handleLogout} className='btn btn-primary mt-4'>Logout</button>
+                    </li>
                 </ul>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Sidebar
+export default Sidebar;

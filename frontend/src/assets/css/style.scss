@@ -142,19 +142,27 @@ header {
 
 .btn-primary {
   @include button-base($primary-color, $primary-color);
+  color: $text-white !important;
 
-  &:hover {
-    background-color: $secondary-color;
-    border-color: $secondary-color;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $secondary-color !important;
+    border-color: $secondary-color !important;
+    color: $text-white !important;
   }
 }
 
 .btn-secondary {
   @include button-base($secondary-color, $secondary-color);
+  color: $text-white !important;
 
-  &:hover {
-    background-color: $primary-color;
-    border-color: $primary-color;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $primary-color !important;
+    border-color: $primary-color !important;
+    color: $text-white !important;
   }
 }
 
@@ -455,6 +463,54 @@ footer {
     background-color: $secondary-color;
     border-color: $secondary-color;
   }
+
+  .table {
+    background-color: $dm-surface;
+    color: $dm-text;
+  }
+
+  .table thead th {
+    background-color: #1a1a1a !important;
+    color: $dm-text !important;
+    border-bottom: 1px solid $dm-border;
+  }
+
+  .table td,
+  .table th {
+    background-color: transparent !important;
+    color: $dm-text !important;
+    border-color: $dm-border !important;
+  }
+
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .table-striped tbody tr:nth-of-type(even) {
+    background-color: transparent !important;
+  }
+
+  .table-hover tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  input,
+  textarea,
+  select {
+    background-color: $dm-surface !important;
+    color: $dm-text !important;
+    border: 1px solid $dm-border;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  select option {
+    background-color: $dm-surface;
+    color: $dm-text;
+  }
 }
 
 .testimonial-card {
@@ -488,3 +544,21 @@ footer {
 }
 
 
+.dark-mode {
+  .Toastify__toast {
+    background: #1e1e1e !important;
+    color: #e0e0e0 !important;
+  }
+
+  .Toastify__toast--success {
+    border-left: 4px solid $primary-color;
+  }
+
+  .Toastify__toast--error {
+    border-left: 4px solid red;
+  }
+
+  .Toastify__progress-bar {
+    background: $primary-color !important;
+  }
+}
