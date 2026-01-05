@@ -60,16 +60,16 @@ class ProjectController extends Controller
                 $fileName = strtotime('now').$project->id . '.' . $ext;
 
                 $originalDir = public_path('uploads/temp');
-                if (!file_exists($originalDir)) {
-                    mkdir($originalDir, 0755, true);
+                if (!File::exists($originalDir)) {
+                    File::makeDirectory($originalDir, 0755, true);
                 }
                 $thumbDir = public_path('uploads/projects/small');
-                if (!file_exists($thumbDir)) {
-                    mkdir($thumbDir, 0755, true);
+                if (!File::exists($thumbDir)) {
+                    File::makeDirectory($thumbDir, 0755, true);
                 }
                 $largeDir = public_path('uploads/projects/large');
-                if (!file_exists($largeDir)) {
-                    mkdir($largeDir, 0755, true);
+                if (!File::exists($largeDir)) {
+                    File::makeDirectory($largeDir, 0755, true);
                 }
 
                 $sourcePath = $originalDir . '/' . $tempImage->name;
@@ -154,16 +154,16 @@ class ProjectController extends Controller
                 $fileName = strtotime('now').$project->id . '.' . $ext;
 
                 $originalDir = public_path('uploads/temp');
-                if (!file_exists($originalDir)) {
-                    mkdir($originalDir, 0755, true);
+                if (!File::exists($originalDir)) {
+                    File::makeDirectory($originalDir, 0755, true);
                 }
                 $thumbDir = public_path('uploads/projects/small');
-                if (!file_exists($thumbDir)) {
-                    mkdir($thumbDir, 0755, true);
+                if (!File::exists($thumbDir)) {
+                    File::makeDirectory($thumbDir, 0755, true);
                 }
                 $largeDir = public_path('uploads/projects/large');
-                if (!file_exists($largeDir)) {
-                    mkdir($largeDir, 0755, true);
+                if (!File::exists($largeDir)) {
+                    File::makeDirectory($largeDir, 0755, true);
                 }
 
                 $sourcePath = $originalDir . '/' . $tempImage->name;

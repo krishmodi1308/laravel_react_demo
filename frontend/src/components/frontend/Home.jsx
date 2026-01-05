@@ -16,6 +16,7 @@ import LatestServices from "../common/LatestServices.jsx";
 import LatestProjects from "../common/LatestProjects.jsx";
 import LatestArticles from "../common/LatestArticles.jsx";
 import Testimonials from "../common/Testimonials.jsx";
+import {Link} from "react-router-dom";
 
 
 const Home = () => {
@@ -33,8 +34,8 @@ const Home = () => {
                                 <h1>Crafting dreams with <br/>precision and excellence.</h1>
                                 <p>We excel at transforming visions into reality through outstanding craftsmanship and precise</p>
                                 <div className='mt-4'>
-                                    <a className='btn btn-primary large'>Contact Now</a>
-                                    <a className='btn btn-secondary large ms-2'>View Projects</a>
+                                    <Link to='/contact-us' className='btn btn-primary large'>Contact Now</Link>
+                                    <Link to='/projects' className='btn btn-secondary large ms-2'>View Projects</Link>
                                 </div>
                             </div>
                         </div>

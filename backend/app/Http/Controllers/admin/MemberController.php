@@ -54,12 +54,12 @@ class MemberController extends Controller
                 $fileName = strtotime('now').$model->id . '.' . $ext;
 
                 $originalDir = public_path('uploads/temp');
-                if (!file_exists($originalDir)) {
-                    mkdir($originalDir, 0755, true);
+                if (!File::exists($originalDir)) {
+                    File::makeDirectory($originalDir, 0755, true);
                 }
                 $thumbDir = public_path('uploads/members');
-                if (!file_exists($thumbDir)) {
-                    mkdir($thumbDir, 0755, true);
+                if (!File::exists($thumbDir)) {
+                    File::makeDirectory($thumbDir, 0755, true);
                 }
 
                 $sourcePath = $originalDir . '/' . $tempImage->name;
@@ -136,12 +136,12 @@ class MemberController extends Controller
                 $fileName = strtotime('now').$member->id . '.' . $ext;
 
                 $originalDir = public_path('uploads/temp');
-                if (!file_exists($originalDir)) {
-                    mkdir($originalDir, 0755, true);
+                if (!File::exists($originalDir)) {
+                    File::makeDirectory($originalDir, 0755, true);
                 }
                 $thumbDir = public_path('uploads/members');
-                if (!file_exists($thumbDir)) {
-                    mkdir($thumbDir, 0755, true);
+                if (!File::exists($thumbDir)) {
+                    File::makeDirectory($thumbDir, 0755, true);
                 }
 
                 $sourcePath = $originalDir . '/' . $tempImage->name;

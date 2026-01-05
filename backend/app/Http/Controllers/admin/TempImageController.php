@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\TempImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -34,14 +35,14 @@ class TempImageController extends Controller
         $model->save();
 
         $originalDir = public_path('uploads/temp');
-        if (!file_exists($originalDir)) {
-            mkdir($originalDir, 0755, true);
+        if (!File::exists($originalDir)) {
+            File::makeDirectory($originalDir, 0755, true);
         }
 
         $image->move($originalDir, $imageName);
         $thumbDir = public_path('uploads/temp/thumb');
-        if (!file_exists($thumbDir)) {
-            mkdir($thumbDir, 0755, true);
+        if (!File::exists($thumbDir)) {
+            File::makeDirectory($thumbDir, 0755, true);
         }
 
         $sourcePath = $originalDir . '/' . $imageName;
