@@ -15,6 +15,7 @@ class Company extends Model
         'phone',
         'alternative_phone',
         'email',
+        'description',
         'website',
         'facebook',
         'twitter',

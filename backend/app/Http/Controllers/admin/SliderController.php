@@ -183,7 +183,7 @@ class SliderController extends Controller
 
     public function getAllSliders()
     {
-        $sliders = Slider::orderBy('created_at', 'desc')->get();
+        $sliders = Slider::where('status', 1)->orderBy('created_at', 'desc')->get();
 
         return response()->json([
             'status' => true,
