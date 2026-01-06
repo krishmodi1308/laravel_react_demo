@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {Link, NavLink} from 'react-router-dom';
 import {useCompany} from "../../context/CompanyContext.jsx";
 import {apiUrl} from "./http.jsx";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Footer = () => {
     const company = useCompany();
@@ -80,9 +81,34 @@ const Footer = () => {
                             <li className='mb-2'>
                                 <a href={`mailto:${company.email}`}>{company.email}</a>
                             </li>
-                            <p>
+                            <p className='mb-2'>
                                 {company.address}
                             </p>
+                            <div className="social-icons mt-3">
+                                {company.linkedin && (
+                                    <a href={company.linkedin} target="_blank" rel="noopener noreferrer" className='me-3'>
+                                        <i className="fab fa-linkedin"></i>
+                                    </a>
+                                )}
+
+                                {company.facebook && (
+                                    <a href={company.facebook} target="_blank" rel="noopener noreferrer" className='me-3'>
+                                        <i className="fab fa-facebook-f"></i>
+                                    </a>
+                                )}
+
+                                {company.instagram && (
+                                    <a href={company.instagram} target="_blank" rel="noopener noreferrer" className='me-3'>
+                                        <i className="fab fa-instagram"></i>
+                                    </a>
+                                )}
+
+                                {company.twitter && (
+                                    <a href={company.twitter} target="_blank" rel="noopener noreferrer" className='me-3'>
+                                        <i className="fab fa-x-twitter"></i>
+                                    </a>
+                                )}
+                            </div>
                         </ul>
                     </div>
                 </div>
