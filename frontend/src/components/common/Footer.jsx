@@ -1,9 +1,25 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom';
+import React, {useEffect, useState} from 'react'
+import {Link, NavLink} from 'react-router-dom';
 import {useCompany} from "../../context/CompanyContext.jsx";
+import {apiUrl} from "./http.jsx";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Footer = () => {
     const company = useCompany();
+
+
+    const [services, setServices] = useState([]);
+    const fetchLatestService = async () => {
+        const res = await fetch(apiUrl+'get-latest-services?limit=4',{
+            'method' : 'GET',
+        });
+        const result = await res.json();
+        setServices(result.data);
+    }
+
+    useEffect(() => {
+        fetchLatestService()
+    }, []);
     if (!company) return null;
     return (
         <footer>
@@ -13,21 +29,27 @@ const Footer = () => {
                         <h3 className='mb-3'>{company.name}</h3>
                         <div className='pe-5'>
                             <p>
-                                Our post-construction services gives you peace of mind
-                                knowing that we are still here for you even after.
+                                {company.description}
                             </p>
                         </div>
                     </div>
 
-                    <div className='col-md-3'>
-                        <h3 className='mb-3'>Our Services</h3>
+                    <div className="col-md-3">
+                        <h3 className="mb-3">Our Services</h3>
+
                         <ul>
-                            <li><a href="#">Specialty Construction</a></li>
-                            <li><a href="#">Specialty Construction</a></li>
-                            <li><a href="#">Specialty Construction</a></li>
-                            <li><a href="#">Specialty Construction</a></li>
+                            {services.length > 0 ? (
+                                services.map((service, index) => (
+                                    <li key={index}>
+                                        <Link to={`/service/${service.slug}`}>{service.title}</Link>
+                                    </li>
+                                ))
+                            ) : (
+                                <li>No services available</li>
+                            )}
                         </ul>
                     </div>
+
 
                     <div className='col-md-3'>
                         <h3 className='mb-3'>Quick Links</h3>
@@ -59,9 +81,34 @@ const Footer = () => {
                             <li className='mb-2'>
                                 <a href={`mailto:${company.email}`}>{company.email}</a>
                             </li>
-                            <p>
+                            <p className='mb-2'>
                                 {company.address}
                             </p>
+                            <div className="social-icons mt-3">
+                                {company.linkedin && (
+                                    <a href={company.linkedin} target="_blank" rel="noopener noreferrer" className='me-3'>
+                                        <i className="fab fa-linkedin"></i>
+                                    </a>
+                                )}
+
+                                {company.facebook && (
+                                    <a href={company.facebook} target="_blank" rel="noopener noreferrer" className='me-3'>
+                                        <i className="fab fa-facebook-f"></i>
+                                    </a>
+                                )}
+
+                                {company.instagram && (
+                                    <a href={company.instagram} target="_blank" rel="noopener noreferrer" className='me-3'>
+                                        <i className="fab fa-instagram"></i>
+                                    </a>
+                                )}
+
+                                {company.twitter && (
+                                    <a href={company.twitter} target="_blank" rel="noopener noreferrer" className='me-3'>
+                                        <i className="fab fa-x-twitter"></i>
+                                    </a>
+                                )}
+                            </div>
                         </ul>
                     </div>
                 </div>

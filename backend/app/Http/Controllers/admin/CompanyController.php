@@ -65,6 +65,7 @@ class CompanyController extends Controller
         $company->phone = $request->phone;
         $company->alternative_phone = $request->alternative_phone;
         $company->address = $request->address;
+        $company->description = $request->description;
         $company->website = $request->website;
         $company->facebook = $request->facebook;
         $company->twitter = $request->twitter;

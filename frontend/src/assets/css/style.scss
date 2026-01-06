@@ -1,5 +1,5 @@
-$primary-color: #0c8f9e;
-$secondary-color: rgba(255, 183, 3, 0.84);
+$primary-color: #0067ba;
+$secondary-color: #d1960f;
 
 $text-color: #000;
 $text-white: #fff;
@@ -14,6 +14,10 @@ $dm-bg: #121212;
 $dm-surface: #1e1e1e;
 $dm-text: #e0e0e0;
 $dm-border: rgba(255, 255, 255, 0.12);
+
+.text-info{
+  color: $primary-color !important;
+}
 
 /* Radius */
 $radius-lg: 40px;
@@ -200,6 +204,16 @@ footer {
   }
 }
 
+.hero {
+  min-height: 600px;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.5s ease-in-out;
+}
+
+
 .section-1,
 .section-7 {
   .hero {
@@ -292,6 +306,18 @@ footer {
       }
     }
   }
+}
+
+.section-1{
+  :root {
+    --dot-color: #000;
+  }
+
+  [data-theme="dark"],
+  .dark {
+    --dot-color: #fff;
+  }
+
 }
 
 .section-5 {
@@ -399,10 +425,6 @@ footer {
     right: 15px;
     bottom: 15px;
   }
-}
-
-body.dark-mode img.company-logo {
-  filter: invert(1) brightness(2) !important;
 }
 
 .dark-mode {

@@ -27,6 +27,9 @@ import {default as EditTestimonials} from "./components/backend/testimonials/Edi
 import {default as ShowMembers} from "./components/backend/members/Show.jsx";
 import {default as CreateMembers} from "./components/backend/members/Create.jsx";
 import {default as EditMembers} from "./components/backend/members/Edit.jsx";
+import {default as ShowSliders} from "./components/backend/sliders/Show.jsx";
+import {default as CreateSliders} from "./components/backend/sliders/Create.jsx";
+import {default as EditSliders} from "./components/backend/sliders/Edit.jsx";
 import ServiceDetail from "./components/frontend/ServiceDetail.jsx";
 import ProjectDetail from "./components/frontend/ProjectDetail.jsx";
 import BlogDetail from "./components/frontend/BlogDetail.jsx";
@@ -140,6 +143,24 @@ function App() {
                 <Route path="/admin/members/edit/:id" element={
                     <RequireAuth>
                         <EditMembers />
+                    </RequireAuth>
+                } />
+
+                <Route path="/admin/sliders" element={
+                    <RequireAuth>
+                        <ShowSliders />
+                    </RequireAuth>
+                } />
+
+                <Route path="/admin/sliders/create" element={
+                    <RequireAuth>
+                        <CreateSliders />
+                    </RequireAuth>
+                } />
+
+                <Route path="/admin/sliders/edit/:id" element={
+                    <RequireAuth>
+                        <EditSliders />
                     </RequireAuth>
                 } />
 
