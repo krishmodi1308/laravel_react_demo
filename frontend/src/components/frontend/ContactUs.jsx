@@ -5,8 +5,11 @@ import Hero from "../common/Hero.jsx";
 import {useForm} from "react-hook-form";
 import {apiUrl} from "../common/http.jsx";
 import {toast} from "react-toastify";
+import { useCompany } from "../../context/CompanyContext.jsx";
 
 const ContactUs = () => {
+    const company = useCompany();
+    if (!company) return null;
 
     const {
         register,
@@ -60,17 +63,14 @@ const ContactUs = () => {
                                 <div className='card shadow border-0 mb-3'>
                                     <div className='card-body p-4'>
                                         <h3>Call Us</h3>
-                                        <div><a href='#'>7016239337</a></div>
-                                        <div><a href='#'>8794562137</a></div>
+                                        <div><a href={`tel:${company.phone}`}>{company.phone}</a></div>
+                                        <div><a href={`tel:${company.alternative_phone}`}>{company.alternative_phone}</a></div>
 
                                         <h3 className='mt-4'>You can write us</h3>
-                                        <div><a href='#'>example@example.com</a></div>
-                                        <div><a href='#'>info@example.com</a></div>
+                                        <div><a href={`tel:${company.email}`}>{company.email}</a></div>
 
                                         <h3 className='mt-4'>Address</h3>
-                                        <div>B-18X, Rajaji Puram<br/>
-                                            Lucknow, Uttar Pradesh, 226017<br/>
-                                            0522400XXXX</div>
+                                        <div>{company.address}</div>
                                     </div>
                                 </div>
                             </div>

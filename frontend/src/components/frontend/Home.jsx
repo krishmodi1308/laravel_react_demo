@@ -1,25 +1,22 @@
 import React, {useEffect, useState} from 'react'
 import Header from "../common/Header.jsx";
 import Footer from "../common/Footer.jsx";
-import constructionImg from '../../assets/images/construction2.jpg';
-import BlogImg from '../../assets/images/construction3.jpg';
 import icon1 from '../../assets/images/icon-1.svg';
 import icon2 from '../../assets/images/icon-2.svg';
 import icon3 from '../../assets/images/icon-3.svg';
-import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import AvatarImg from '../../assets/images/author-2.jpg';
-import {Pagination} from 'swiper/modules';
 import About from "../common/About.jsx";
 import LatestServices from "../common/LatestServices.jsx";
 import LatestProjects from "../common/LatestProjects.jsx";
 import LatestArticles from "../common/LatestArticles.jsx";
 import Testimonials from "../common/Testimonials.jsx";
 import {Link} from "react-router-dom";
-
+import { useCompany } from "../../context/CompanyContext.jsx";
 
 const Home = () => {
+    const company = useCompany();
+    if (!company) return null;
 
     return (
         <>
@@ -30,7 +27,7 @@ const Home = () => {
                     <div className='hero d-flex align-items-center'>
                         <div className='container-fluid'>
                             <div className='text-center'>
-                                <span>Welcome to Kanha Constructions</span>
+                                <span>Welcome to {company.name}</span>
                                 <h1>Crafting dreams with <br/>precision and excellence.</h1>
                                 <p>We excel at transforming visions into reality through outstanding craftsmanship and precise</p>
                                 <div className='mt-4'>

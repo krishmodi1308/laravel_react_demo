@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Krish Modi',
             'email' => 'admin@constructor.com',
         ]);
+        $this->call(CompanySeeder::class);
     }
 }

@@ -30,6 +30,7 @@ import {default as EditMembers} from "./components/backend/members/Edit.jsx";
 import ServiceDetail from "./components/frontend/ServiceDetail.jsx";
 import ProjectDetail from "./components/frontend/ProjectDetail.jsx";
 import BlogDetail from "./components/frontend/BlogDetail.jsx";
+import {default as Settings} from "./components/backend/companies/Edit.jsx";
 
 function App() {
     return (
@@ -141,6 +142,13 @@ function App() {
                         <EditMembers />
                     </RequireAuth>
                 } />
+
+                <Route path="/admin/company-settings" element={
+                    <RequireAuth>
+                        <Settings />
+                    </RequireAuth>
+                } />
+
 
             </Routes>
             <ToastContainer

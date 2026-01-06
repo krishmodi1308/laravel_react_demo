@@ -16,6 +16,8 @@ use App\Http\Controllers\admin\ProjectController;
 use App\Http\Controllers\admin\ArticleController;
 use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\MemberController;
+use App\Http\Controllers\admin\CompanyController;
+use App\Http\Controllers\admin\SliderController;
 
 Route::post('authenticate', [AuthenticationController::class, 'authenticate']);
 
@@ -80,6 +82,18 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('members/{id}', [MemberController::class, 'show']);
     Route::delete('members/{id}', [MemberController::class, 'destroy']);
 
+    // sliders Routes
+    Route::post('sliders', [SliderController::class, 'store']);
+    Route::get('sliders', [SliderController::class, 'index']);
+    Route::put('sliders/{id}', [SliderController::class, 'update']);
+    Route::get('sliders/{id}', [SliderController::class, 'show']);
+    Route::delete('sliders/{id}', [SliderController::class, 'destroy']);
+
     // temp image routes
     Route::post('temp-images', [TempImageController::class, 'store']);
+
+    // company settings routes
+    Route::put('companies/{id}', [CompanyController::class, 'update']);
+    Route::get('companies/{id}', [CompanyController::class, 'show']);
+    Route::get('/company', [CompanyController::class, 'index']);
 });

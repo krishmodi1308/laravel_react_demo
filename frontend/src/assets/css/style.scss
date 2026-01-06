@@ -401,6 +401,10 @@ footer {
   }
 }
 
+body.dark-mode img.company-logo {
+  filter: invert(1) brightness(2) !important;
+}
+
 .dark-mode {
   background-color: $dm-bg;
   color: $dm-text;

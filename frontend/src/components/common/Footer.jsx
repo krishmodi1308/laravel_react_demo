@@ -1,13 +1,16 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import {useCompany} from "../../context/CompanyContext.jsx";
 
 const Footer = () => {
+    const company = useCompany();
+    if (!company) return null;
     return (
         <footer>
             <div className='container py-5'>
                 <div className='row'>
                     <div className='col-md-3'>
-                        <h3 className='mb-3'>Kanha Constructions</h3>
+                        <h3 className='mb-3'>{company.name}</h3>
                         <div className='pe-5'>
                             <p>
                                 Our post-construction services gives you peace of mind
@@ -51,15 +54,13 @@ const Footer = () => {
                         <h3 className='mb-3'>Contact Us</h3>
                         <ul>
                             <li>
-                                <a href="tel:8880000000">(888-000-0000)</a>
+                                <a href={`tel:${company.phone}`}>{company.phone}</a>
                             </li>
-                            <li>
-                                <a href="mailto:info@example.com">info@example.com</a>
+                            <li className='mb-2'>
+                                <a href={`mailto:${company.email}`}>{company.email}</a>
                             </li>
                             <p>
-                                B-18X, Rajaji Puram <br />
-                                Lucknow, Uttar Pradesh, 226017<br />
-                                0522400XXXX
+                                {company.address}
                             </p>
                         </ul>
                     </div>
@@ -68,7 +69,7 @@ const Footer = () => {
                 <hr />
 
                 <div className='text-center pt-4'>
-                    <p>Copyright © 2024 UrbanEdge Constructions. All Rights Reserved.</p>
+                    <p>Copyright © 2026 {company.name}. All Rights Reserved.</p>
                 </div>
             </div>
         </footer>
