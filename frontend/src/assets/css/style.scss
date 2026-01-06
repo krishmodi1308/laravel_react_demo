@@ -1,4 +1,4 @@
-$primary-color: #5607d2;
+$primary-color: #0067ba;
 $secondary-color: #d1960f;
 
 $text-color: #000;
@@ -425,10 +425,6 @@ footer {
     right: 15px;
     bottom: 15px;
   }
-}
-
-body.dark-mode img.company-logo {
-  filter: invert(1) brightness(2) !important;
 }
 
 .dark-mode {
