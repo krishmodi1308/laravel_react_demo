@@ -38,7 +38,7 @@ const Header = () => {
                             <span>{company?.name?.split(' ')[0]} </span>
                         )}
                         {company?.image ? null : (
-                            <span>{company?.name?.split(' ')[0]}</span>
+                            <>{company?.name?.split(' ')[1]}</>
                         )}
                     </Navbar.Brand>
 

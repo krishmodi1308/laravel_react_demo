@@ -26,10 +26,8 @@ class SliderController extends Controller
 
     public function store(Request $request)
     {
-        $request->merge(['slug' => Str::slug($request->slug)]);
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'slug' => 'required|unique:sliders,slug',
         ]);
 
         if($validator->fails()){
@@ -108,10 +106,8 @@ class SliderController extends Controller
             ]);
         }
 
-        $request->merge(['slug' => Str::slug($request->slug)]);
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'slug' => 'required|unique:sliders,slug,'.$id.',id'
         ]);
 
         if($validator->fails()){
@@ -122,9 +118,7 @@ class SliderController extends Controller
         }
 
         $slider->title = $request->title;
-        $slider->author = $request->author;
-        $slider->slug = Str::slug($request->slug);
-        $slider->content = $request->content;
+        $slider->description = $request->description;
         $slider->status = $request->status;
         $slider->save();
 
@@ -184,6 +178,16 @@ class SliderController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Slider deleted successfully!'
+        ]);
+    }
+
+    public function getAllSliders()
+    {
+        $sliders = Slider::orderBy('created_at', 'desc')->get();
+
+        return response()->json([
+            'status' => true,
+            'data' => $sliders
         ]);
     }
 }
