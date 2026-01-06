@@ -9,7 +9,7 @@ import api from "../../common/axios";
 import { fileUrl } from "../../common/http.jsx";
 
 const Edit = ({ placeholder }) => {
-    const [article, setArticle] = useState(null);
+    const [slider, setSlider] = useState(null);
     const [isDisable, setIsDisable] = useState(false);
     const [imageId, setImageId] = useState(null);
 
@@ -19,31 +19,31 @@ const Edit = ({ placeholder }) => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     useEffect(() => {
-        const fetchArticle = async () => {
+        const fetchSlider = async () => {
             try {
-                const res = await api.get(`articles/${id}`);
+                const res = await api.get(`sliders/${id}`);
 
                 if (!res.data.status) {
-                    toast.error(res.data.message || "Article not found");
-                    navigate("/admin/articles");
+                    toast.error(res.data.message || "Slider not found");
+                    navigate("/admin/sliders");
                     return;
                 }
 
-                setArticle(res.data.data);
+                setSlider(res.data.data);
 
                 reset({
                     title: res.data.data.title,
                     slug: res.data.data.slug,
                     author: res.data.data.author,
-                    content: res.data.data.content,
+                    description: res.data.data.description,
                     status: res.data.data.status,
                 });
             } catch (error) {
-                toast.error("Failed to load article");
+                toast.error("Failed to load slider");
             }
         };
 
-        fetchArticle();
+        fetchSlider();
     }, [id, reset, navigate]);
 
     const onSubmit = async (data) => {
@@ -55,11 +55,11 @@ const Edit = ({ placeholder }) => {
                 imageId,
             };
 
-            const res = await api.put(`articles/${id}`, payload);
+            const res = await api.put(`sliders/${id}`, payload);
 
             if (res.data.status) {
                 toast.success(res.data.message);
-                navigate("/admin/articles");
+                navigate("/admin/sliders");
             } else {
                 toast.error(res.data.message || "Update failed");
             }
@@ -86,7 +86,7 @@ const Edit = ({ placeholder }) => {
                 toast.error(res.data.errors?.image?.[0] || "Image upload failed");
             } else {
                 setImageId(res.data.data.id);
-                setArticle(prev => ({ ...prev, image: res.data.data.filename })); // optional preview
+                setSlider(prev => ({ ...prev, image: res.data.data.filename })); // optional preview
             }
         } catch (err) {
             toast.error("Image upload failed");
@@ -109,8 +109,8 @@ const Edit = ({ placeholder }) => {
                             <div className="card shadow border-0">
                                 <div className="card-body p-4">
                                     <div className="d-flex justify-content-between">
-                                        <h4 className="h5">Edit Article</h4>
-                                        <Link to="/admin/articles" className="btn btn-primary">
+                                        <h4 className="h5">Edit Slider</h4>
+                                        <Link to="/admin/sliders" className="btn btn-primary">
                                             Back
                                         </Link>
                                     </div>
@@ -131,28 +131,11 @@ const Edit = ({ placeholder }) => {
                                         </div>
 
                                         <div className="mb-3">
-                                            <label className="form-label">Slug</label>
-                                            <input
-                                                type="text"
-                                                className={`form-control ${errors.slug ? "is-invalid" : ""}`}
-                                                {...register("slug", { required: "Slug is required" })}
-                                            />
-                                            {errors.slug && (
-                                                <div className="invalid-feedback">{errors.slug.message}</div>
-                                            )}
-                                        </div>
-
-                                        <div className="mb-3">
-                                            <label className="form-label">Author</label>
-                                            <input type="text" className="form-control" {...register("author")} />
-                                        </div>
-
-                                        <div className="mb-3">
-                                            <label className="form-label">Article Content</label>
+                                            <label className="form-label">Slider Content</label>
                                             <textarea
                                                 rows="4"
                                                 className="form-control"
-                                                {...register("content")}
+                                                {...register("description")}
                                             ></textarea>
                                         </div>
 
@@ -161,11 +144,11 @@ const Edit = ({ placeholder }) => {
                                             <input type="file" className="form-control" onChange={handleFile} />
                                         </div>
 
-                                        {article?.image && (
+                                        {slider?.image && (
                                             <div className="pb-3">
                                                 <img
-                                                    src={`${fileUrl}uploads/articles/small/${article.image}`}
-                                                    alt="Article"
+                                                    src={`${fileUrl}uploads/sliders/${slider.image}`}
+                                                    alt="Slider"
                                                     className="img-fluid"
                                                 />
                                             </div>

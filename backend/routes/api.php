@@ -37,7 +37,7 @@ Route::get('get-testimonials', [FrontTestimonialController::class, 'index']);
 Route::get('get-members', [FrontMemberController::class, 'index']);
 
 Route::post('contact-now', [ContactController::class, 'index']);
-
+Route::get('get-sliders', [SliderController::class, 'getAllSliders']);
 //Route::get('/user', function (Request $request) {
 //    return $request->user();
 //})->middleware('auth:sanctum');

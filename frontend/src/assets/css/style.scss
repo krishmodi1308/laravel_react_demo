@@ -200,6 +200,16 @@ footer {
   }
 }
 
+.hero {
+  min-height: 600px;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.5s ease-in-out;
+}
+
+
 .section-1,
 .section-7 {
   .hero {
@@ -292,6 +302,18 @@ footer {
       }
     }
   }
+}
+
+.section-1{
+  :root {
+    --dot-color: #000;
+  }
+
+  [data-theme="dark"],
+  .dark {
+    --dot-color: #fff;
+  }
+
 }
 
 .section-5 {

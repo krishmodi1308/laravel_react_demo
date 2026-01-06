@@ -1,10 +1,25 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom';
+import React, {useEffect, useState} from 'react'
+import {Link, NavLink} from 'react-router-dom';
 import {useCompany} from "../../context/CompanyContext.jsx";
+import {apiUrl} from "./http.jsx";
 
 const Footer = () => {
     const company = useCompany();
     if (!company) return null;
+
+    const [services, setServices] = useState([]);
+    const fetchLatestService = async () => {
+        const res = await fetch(apiUrl+'get-latest-services?limit=4',{
+            'method' : 'GET',
+        });
+        const result = await res.json();
+        setServices(result.data);
+    }
+
+    useEffect(() => {
+        fetchLatestService()
+    }, []);
+
     return (
         <footer>
             <div className='container py-5'>
@@ -19,15 +34,22 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className='col-md-3'>
-                        <h3 className='mb-3'>Our Services</h3>
+                    <div className="col-md-3">
+                        <h3 className="mb-3">Our Services</h3>
+
                         <ul>
-                            <li><a href="#">Specialty Construction</a></li>
-                            <li><a href="#">Specialty Construction</a></li>
-                            <li><a href="#">Specialty Construction</a></li>
-                            <li><a href="#">Specialty Construction</a></li>
+                            {services.length > 0 ? (
+                                services.map((service, index) => (
+                                    <li key={index}>
+                                        <Link to={`/service/${service.slug}`}>{service.title}</Link>
+                                    </li>
+                                ))
+                            ) : (
+                                <li>No services available</li>
+                            )}
                         </ul>
                     </div>
+
 
                     <div className='col-md-3'>
                         <h3 className='mb-3'>Quick Links</h3>
