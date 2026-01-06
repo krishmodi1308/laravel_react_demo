@@ -5,7 +5,7 @@ import {apiUrl} from "./http.jsx";
 
 const Footer = () => {
     const company = useCompany();
-    if (!company) return null;
+
 
     const [services, setServices] = useState([]);
     const fetchLatestService = async () => {
@@ -19,7 +19,7 @@ const Footer = () => {
     useEffect(() => {
         fetchLatestService()
     }, []);
-
+    if (!company) return null;
     return (
         <footer>
             <div className='container py-5'>
@@ -28,8 +28,7 @@ const Footer = () => {
                         <h3 className='mb-3'>{company.name}</h3>
                         <div className='pe-5'>
                             <p>
-                                Our post-construction services gives you peace of mind
-                                knowing that we are still here for you even after.
+                                {company.description}
                             </p>
                         </div>
                     </div>

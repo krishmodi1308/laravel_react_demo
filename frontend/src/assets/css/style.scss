@@ -1,5 +1,5 @@
-$primary-color: #0c8f9e;
-$secondary-color: rgba(255, 183, 3, 0.84);
+$primary-color: #5607d2;
+$secondary-color: #d1960f;
 
 $text-color: #000;
 $text-white: #fff;
@@ -14,6 +14,10 @@ $dm-bg: #121212;
 $dm-surface: #1e1e1e;
 $dm-text: #e0e0e0;
 $dm-border: rgba(255, 255, 255, 0.12);
+
+.text-info{
+  color: $primary-color !important;
+}
 
 /* Radius */
 $radius-lg: 40px;

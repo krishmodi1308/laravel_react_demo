@@ -48,6 +48,7 @@ const Settings = () => {
                     twitter: data.twitter ?? "",
                     linkedin: data.linkedin ?? "",
                     instagram: data.instagram ?? "",
+                    description: data.description ?? "",
                 });
             } catch {
                 toast.error("Failed to load company settings");
@@ -152,6 +153,11 @@ const Settings = () => {
                                                 className={`form-control ${errors.email ? "is-invalid" : ""}`}
                                                 {...register("email", { required: "Email is required" })}
                                             />
+                                        </div>
+
+                                        <div className="mb-3">
+                                            <label className="form-label">Description</label>
+                                            <textarea className="form-control" rows="3" {...register("description")} />
                                         </div>
 
                                         <div className="mb-3">
