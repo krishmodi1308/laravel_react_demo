@@ -36,7 +36,6 @@ const Footer = () => {
 
                     <div className="col-md-3">
                         <h3 className="mb-3">Our Services</h3>
-
                         <ul>
                             {services.length > 0 ? (
                                 services.map((service, index) => (
@@ -47,6 +46,9 @@ const Footer = () => {
                             ) : (
                                 <li>No services available</li>
                             )}
+                            <li>
+                                <Link to='/services'>More Services</Link>
+                            </li>
                         </ul>
                     </div>
 
