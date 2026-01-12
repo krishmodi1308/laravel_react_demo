@@ -3,6 +3,15 @@ export const fileUrl = 'http://127.0.0.1:8000/'
 
 export const token = () => {
     const userInfo = localStorage.getItem('userInfo');
-    const data = JSON.parse(userInfo);
-    return data.token;
-}
+
+    if (!userInfo) {
+        return null;
+    }
+
+    try {
+        const data = JSON.parse(userInfo);
+        return data?.token ?? null;
+    } catch (e) {
+        return null;
+    }
+};

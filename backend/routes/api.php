@@ -38,6 +38,7 @@ Route::get('get-members', [FrontMemberController::class, 'index']);
 
 Route::post('contact-now', [ContactController::class, 'index']);
 Route::get('get-sliders', [SliderController::class, 'getAllSliders']);
+Route::get('/company', [CompanyController::class, 'index']);
 //Route::get('/user', function (Request $request) {
 //    return $request->user();
 //})->middleware('auth:sanctum');
@@ -95,5 +96,4 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     // company settings routes
     Route::put('companies/{id}', [CompanyController::class, 'update']);
     Route::get('companies/{id}', [CompanyController::class, 'show']);
-    Route::get('/company', [CompanyController::class, 'index']);
 });
