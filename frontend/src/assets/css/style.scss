@@ -152,8 +152,8 @@ header {
   &:hover,
   &:focus,
   &:active {
-    background-color: $secondary-color !important;
-    border-color: $secondary-color !important;
+    background-color: $primary-color !important;
+    border-color: $primary-color !important;
     color: $text-white !important;
   }
 }
@@ -165,8 +165,8 @@ header {
   &:hover,
   &:focus,
   &:active {
-    background-color: $primary-color !important;
-    border-color: $primary-color !important;
+    background-color: $secondary-color !important;
+    border-color: $secondary-color !important;
     color: $text-white !important;
   }
 }
