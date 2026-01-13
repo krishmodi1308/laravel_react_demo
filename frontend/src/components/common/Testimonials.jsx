@@ -22,7 +22,7 @@ const LatestTestimonials = () => {
             <section className='section-5 py-5'>
                 <div className='container py-5'>
                     <div className='section-header text-center'>
-                        <span>Testimonials</span>
+                        <span className="section-tag">Blog & News</span>
                         <h2>What people are saying about us</h2>
                         <p>We offer a diverse array of construction services, spanning residential, commercial, and industrial projects.</p>
                     </div>

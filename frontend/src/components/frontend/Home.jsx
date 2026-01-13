@@ -112,7 +112,7 @@ const Home = () => {
                 <LatestServices />
 
                 {/* Why Choose us */}
-                <section className='section-4 py-5'>
+                <section className='section-4 py-5 futuristic-why'>
                     <div className='container py-5'>
                         <div className='section-header text-center'>
                             <span>Why choose us</span>
