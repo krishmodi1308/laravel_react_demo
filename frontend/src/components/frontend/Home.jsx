@@ -83,26 +83,6 @@ const Home = () => {
                             <h2>Loading Slider...</h2>
                         </div>
                     )}
-
-                    {sliders.length > 1 && (
-                        <div className="slider-controls text-center">
-                            {sliders.map((_, i) => (
-                                <button key={i} onClick={() => setCurrent(i)}
-                                    style={{
-                                        width: '12px',
-                                        height: '12px',
-                                        borderRadius: '50%',
-                                        margin: '0 6px',
-                                        border: '1.5px solid var(--dot-color)',
-                                        backgroundColor: i === current ? 'var(--dot-color)' : 'transparent',
-                                        cursor: 'pointer',
-                                        opacity: i === current ? 1 : 0.7,
-                                    }}
-                                />
-                            ))}
-                        </div>
-                    )}
-
                 </section>
 
                 {/* About us Section */}
