@@ -85,7 +85,7 @@ const Home = () => {
                     )}
 
                     {sliders.length > 1 && (
-                        <div className="slider-controls text-center mt-3">
+                        <div className="slider-controls text-center">
                             {sliders.map((_, i) => (
                                 <button key={i} onClick={() => setCurrent(i)}
                                     style={{

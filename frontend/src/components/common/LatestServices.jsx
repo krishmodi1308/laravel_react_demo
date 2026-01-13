@@ -19,7 +19,7 @@ const LatestServices = () => {
     }, []);
     return (
         <>
-            <section className='section-3 bg-light py-5'>
+            <section className='section-3 futuristic-services bg-light py-5'>
                 <div className='container-fluid py-5'>
                     <div className='section-header text-center'>
                         <span>our services</span>
@@ -31,18 +31,18 @@ const LatestServices = () => {
                             services && services.map(service =>{
                                 return (
                                 <div className='col-md-3 col-lg-3' key={service.id}>
-                                    <div className='item'>
-                                        <div className='service-image'>
-                                            <img src={`${fileUrl}uploads/services/small/${service.image}`} alt="" className='w-100'/>
-                                        </div>
-                                        <div className='service-body'>
-                                            <div className='service-title'>
-                                                <h3>{service.title}</h3>
-                                            </div>
-                                            <div className='service-content'>
-                                                <p>{service.short_desc}</p>
-                                                <Link to={`/service/${service.slug}`} className='btn btn-primary small'>Read More</Link>
-                                            </div>
+                                    <div className="item service-card">
+                                        <img
+                                            src={`${fileUrl}uploads/services/small/${service.image}`}
+                                            alt=""
+                                        />
+
+                                        <div className="overlay">
+                                            <h3>{service.title}</h3>
+                                            <p>{service.short_desc}</p>
+                                            <Link to={`/service/${service.slug}`} className="btn btn-outline-light">
+                                                Read More
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
