@@ -710,6 +710,15 @@ footer {
   background-color: $dm-bg;
   color: $dm-text;
 
+  .section-8{
+    .card{
+     .card-body{
+       background-color: #1a1a1a;
+       border-bottom-left-radius: 40px;
+       border-bottom-right-radius: 40px;
+     }
+    }
+  }
   body {
     background-color: $dm-bg;
     color: $dm-text;
