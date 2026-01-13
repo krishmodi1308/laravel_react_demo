@@ -36,18 +36,16 @@ const Footer = () => {
 
                     <div className="col-md-3">
                         <h3 className="mb-3">Our Services</h3>
-                        <ul>
-                            {services.length > 0 ? (
-                                services.map((service, index) => (
-                                    <li key={index}>
-                                        <Link to={`/service/${service.slug}`}>{service.title}</Link>
-                                    </li>
-                                ))
-                            ) : (
-                                <li>No services available</li>
-                            )}
+                        <ul className="footer-list">
+                            {services.map((service, index) => (
+                                <li key={index}>
+                                    <i className="fas fa-chevron-right"></i>
+                                    <Link to={`/service/${service.slug}`}>{service.title}</Link>
+                                </li>
+                            ))}
                             <li>
-                                <Link to='/services'>More Services</Link>
+                                <i className="fas fa-arrow-right"></i>
+                                <Link to="/services">More Services</Link>
                             </li>
                         </ul>
                     </div>
@@ -55,20 +53,25 @@ const Footer = () => {
 
                     <div className='col-md-3'>
                         <h3 className='mb-3'>Quick Links</h3>
-                        <ul className="footer-links">
+                        <ul className="footer-list">
                             <li>
+                                <i className="fas fa-chevron-right"></i>
                                 <NavLink to="/about">About us</NavLink>
                             </li>
                             <li>
+                                <i className="fas fa-chevron-right"></i>
                                 <NavLink to="/services">Services</NavLink>
                             </li>
                             <li>
+                                <i className="fas fa-chevron-right"></i>
                                 <NavLink to="/projects">Projects</NavLink>
                             </li>
                             <li>
+                                <i className="fas fa-chevron-right"></i>
                                 <NavLink to="/blogs">Blog</NavLink>
                             </li>
                             <li>
+                                <i className="fas fa-chevron-right"></i>
                                 <NavLink to="/contact-us">Contact us</NavLink>
                             </li>
                         </ul>
@@ -76,16 +79,19 @@ const Footer = () => {
 
                     <div className='col-md-3'>
                         <h3 className='mb-3'>Contact Us</h3>
-                        <ul>
+                        <ul className="footer-list contact-list">
                             <li>
+                                <i className="fas fa-phone"></i>
                                 <a href={`tel:${company.phone}`}>{company.phone}</a>
                             </li>
-                            <li className='mb-2'>
+                            <li>
+                                <i className="fas fa-envelope"></i>
                                 <a href={`mailto:${company.email}`}>{company.email}</a>
                             </li>
-                            <p className='mb-2'>
-                                {company.address}
-                            </p>
+                            <li>
+                                <i className="fas fa-location-dot"></i>
+                                <span>{company.address}</span>
+                            </li>
                             <div className="social-icons mt-3">
                                 {company.linkedin && (
                                     <a href={company.linkedin} target="_blank" rel="noopener noreferrer" className='me-3'>

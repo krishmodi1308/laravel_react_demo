@@ -699,3 +699,110 @@ nav {
 }
 
 
+$footer-bg: linear-gradient(180deg, #0b0f1a, #000);
+$glass-border: rgba(255, 255, 255, 0.08);
+
+footer {
+  background: $footer-bg;
+  color: #cfd3ff;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+            radial-gradient(circle at 10% 10%, rgba(99,102,241,0.15), transparent 40%),
+            radial-gradient(circle at 90% 90%, rgba(14,165,233,0.15), transparent 40%);
+    pointer-events: none;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1rem;
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, $primary-color, transparent);
+      display: block;
+      margin-top: 6px;
+    }
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.85;
+  }
+
+  .footer-list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+      font-size: 0.95rem;
+
+      i {
+        font-size: 0.75rem;
+        color: $primary-color;
+      }
+
+      a {
+        color: #cfd3ff;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: #fff;
+          transform: translateX(4px);
+        }
+      }
+    }
+  }
+
+  .contact-list i {
+    font-size: 0.9rem;
+  }
+
+  .social-icons a {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid $glass-border;
+    background: rgba(255, 255, 255, 0.03);
+    color: #fff;
+    transition: all 0.35s ease;
+
+    &:hover {
+      background: $primary-color;
+      box-shadow: 0 0 20px rgba(99,102,241,0.6);
+      transform: translateY(-3px);
+    }
+  }
+
+  hr {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .text-center p {
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
+}
+
+.dark-mode footer {
+  background: #000;
+}
