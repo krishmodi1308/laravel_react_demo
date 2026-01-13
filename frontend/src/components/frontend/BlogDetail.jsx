@@ -62,7 +62,7 @@ const BlogDetail = () => {
                                             return (
                                                 <div className='d-flex border-bottom mb-3 pb-2' key={article.id}>
                                                     <div className='pe-3 pb-2'>
-                                                        <img src={`${fileUrl}uploads/articles/small/${article.image}`} alt='' style={{ width: '100px', height: '100px' }} />
+                                                        <img src={`${fileUrl}uploads/articles/small/${article.image}`} alt='' style={{ width: '80px', height: '80px' }} />
                                                     </div>
                                                     <Link to={`/article/${article.slug}`}>{article.title}</Link>
                                                     <hr />

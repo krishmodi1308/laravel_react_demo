@@ -25,7 +25,7 @@ const Projects = () => {
                 <Hero preHeading='Quality. Integrity. Value.' heading='Our Projects'
                       text='We excel at transforming visions into reality <br/> through outstanding craftsmanship and precise.'/>
 
-                <section className='section-3 bg-light py-5'>
+                <section className='section-3 bg-light futuristic-services py-5'>
                     <div className='container py-5'>
                         <div className='section-header text-center'>
                             <span>our projects</span>
@@ -37,18 +37,14 @@ const Projects = () => {
                                 projects && projects.map(project =>{
                                     return (
                                         <div className='col-md-4 col-lg-4' key={project.id}>
-                                            <div className='item'>
-                                                <div className='service-image'>
-                                                    <img src={`${fileUrl}uploads/projects/small/${project.image}`} alt="" className='w-100'/>
-                                                </div>
-                                                <div className='service-body'>
-                                                    <div className='service-title'>
-                                                        <h3>{project.title}</h3>
-                                                    </div>
-                                                    <div className='service-content'>
-                                                        <p>{project.short_desc}</p>
-                                                        <Link to={`/project/${project.slug}`} className='btn btn-primary small'>Read More</Link>
-                                                    </div>
+                                            <div className='item service-card'>
+                                                <img src={`${fileUrl}uploads/projects/small/${project.image}`} alt="" />
+                                                <div className="overlay">
+                                                    <h3>{project.title}</h3>
+                                                    <p>{project.short_desc}</p>
+                                                    <Link to={`/project/${project.slug}`} className="btn btn-outline-light">
+                                                        Read More
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
