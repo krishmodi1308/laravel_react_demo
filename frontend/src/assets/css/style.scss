@@ -588,3 +588,114 @@ footer {
     background: $primary-color !important;
   }
 }
+
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.75);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.logo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  strong {
+    color: $primary-color;
+    margin-left: 4px;
+  }
+
+  .company-logo {
+    height: 52px;
+    width: auto;
+    object-fit: contain;
+  }
+}
+
+nav {
+  .nav-link {
+    position: relative;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #333;
+    padding: 6px 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: $primary-color;
+      transition: width 0.3s ease;
+    }
+
+    &:hover::after,
+    &.active::after {
+      width: 100%;
+    }
+
+    &.active {
+      color: $primary-color;
+      font-weight: 600;
+    }
+  }
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: $primary-color;
+  margin-left: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 12px rgba($primary-color, 0.6);
+  }
+}
+
+.dark-mode {
+  .main-header {
+    background: rgba(15, 15, 20, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  nav .nav-link {
+    color: #ddd;
+
+    &.active {
+      color: $primary-color;
+    }
+  }
+
+  .logo {
+    color: #fff;
+  }
+}
+
+@include respond-max($md) {
+  .main-header {
+    backdrop-filter: none;
+  }
+
+  nav .nav-link {
+    padding: 12px 0;
+    font-size: 0.9rem;
+  }
+
+  .theme-toggle {
+    margin-top: 15px;
+  }
+}
+
+
