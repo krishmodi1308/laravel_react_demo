@@ -48,9 +48,9 @@ const LatestTestimonials = () => {
                         {
                             testimonials && testimonials.map(testimonial =>{
                                 return (
-                        <SwiperSlide>
-                            <div className='testimonial-card card shadow border-0' key={testimonial.id}>
-                                <div className='card-body p-5 d-flex flex-column'>
+                        <SwiperSlide key={testimonial.id}>
+                            <div className="testimonial-card futuristic card shadow border-0">
+                                <div className="card-body p-5 d-flex flex-column">
                                     <div className="rating">
                                         {[...Array(5)].map((_, index) => (
                                             <svg key={index} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" className="bi bi-star-fill" fill={index < testimonial.stars ? "currentColor" : "#ccc"}>
@@ -63,13 +63,16 @@ const LatestTestimonials = () => {
                                             {testimonial.testimonial}
                                         </p>
                                     </div>
-                                    <div className="mt-auto">
-                                        <hr />
-                                        <div className="d-flex meta align-items-center">
-                                            <img src={`${fileUrl}uploads/testimonials/${testimonial.image}`} alt="" width={50} height={50} className="rounded-circle" />
-                                            <div className="ps-3">
-                                                <div className="name">{testimonial.citation}</div>
-                                                <div className="designation">CEO</div>
+                                    <div className="testimonial-footer mt-auto pt-4">
+                                        <div className="d-flex align-items-center gap-3">
+                                            <img
+                                                src={`${fileUrl}uploads/testimonials/${testimonial.image}`}
+                                                alt=""
+                                                className="author-img"
+                                            />
+                                            <div className="author-info">
+                                                <div className="author-name">{testimonial.citation}</div>
+                                                <div className="author-role">CEO</div>
                                             </div>
                                         </div>
                                     </div>
