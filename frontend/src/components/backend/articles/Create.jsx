@@ -73,7 +73,6 @@ const Create = ({ placeholder }) => {
 
     return (
         <>
-            <Header />
             <main>
                 <div className="container py-5">
                     <div className="row">
@@ -178,7 +177,6 @@ const Create = ({ placeholder }) => {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 };

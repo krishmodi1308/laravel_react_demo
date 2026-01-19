@@ -38,7 +38,6 @@ const Login = () => {
 
     return (
         <>
-            <Header/>
             <main>
                 <div className='container my-5 d-flex justify-content-center'>
                     <div className='login-form my-5'>
@@ -83,7 +82,6 @@ const Login = () => {
                     </div>
                 </div>
             </main>
-            <Footer/>
         </>
     )
 }

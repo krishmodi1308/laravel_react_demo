@@ -97,7 +97,6 @@ const Edit = ({placeholder}) => {
 
     return (
        <>
-           <Header/>
            <main>
                <div className='container py-5'>
                    <div className='row'>
@@ -188,7 +187,6 @@ const Edit = ({placeholder}) => {
                    </div>
                </div>
            </main>
-           <Footer/>
        </>
     )
 }
