@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/slices/authSlice";
+import {useCompany} from "../../context/CompanyContext.jsx";
 
 const Sidebar = () => {
     const dispatch = useDispatch();
@@ -11,6 +12,26 @@ const Sidebar = () => {
         dispatch(logout());
         navigate('/admin/login');
     };
+
+    const company = useCompany();
+    const [darkMode, setDarkMode] = useState(false);
+
+    useEffect(() => {
+        const savedMode = localStorage.getItem('darkMode');
+        if (savedMode === 'true') {
+            document.body.classList.add('dark-mode');
+            setDarkMode(true);
+        }
+    }, []);
+
+    const toggleDarkMode = () => {
+        const newMode = !darkMode;
+        setDarkMode(newMode);
+        document.body.classList.toggle('dark-mode', newMode);
+        localStorage.setItem('darkMode', newMode);
+    };
+
+    if (!company) return null;
 
     return (
         <div className='card shadow border-0 mb-3'>
