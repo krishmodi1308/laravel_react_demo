@@ -46,7 +46,6 @@ const Show = () => {
 
     return (
         <>
-            <Header />
             <main>
                 <div className="container py-5">
                     <div className="row">
@@ -107,7 +106,6 @@ const Show = () => {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 };

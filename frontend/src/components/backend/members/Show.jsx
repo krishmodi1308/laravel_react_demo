@@ -51,63 +51,61 @@ const Show = () => {
 
     return(
         <>
-            <Header/>
-                <main className='member-table'>
-                    <div className='container py-5'>
-                        <div className='row'>
-                            <div className='col-md-3'>
-                                {/*Sidebar*/}
-                                <Sidebar/>
-                            </div>
-                            <div className='col-md-9'>
-                                {/*Dashboard*/}
-                                <div className='card shadow border-0'>
-                                    <div className='card-body p-4'>
-                                        <div className='d-flex justify-content-between'>
-                                            <h4 className='h5'>Members</h4>
-                                            <Link to="/admin/members/create" className='btn btn-primary'>Create</Link>
-                                        </div>
-                                        <hr />
-                                        <table className='table table-striped'>
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Name</th>
-                                                    <th>Designation</th>
-                                                    <th>Status</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {
-                                                    members && members.map(member => {
-                                                        return(
-                                                            <tr key={`member-${member.id}`}>
-                                                                <td>{member.id}</td>
-                                                                <td>{member.name}</td>
-                                                                <td className='members-star'>{member.job_title}</td>
-                                                                <td>
-                                                                    {
-                                                                        (member.status == 1) ? 'Active' : 'Block'
-                                                                    }
-                                                                </td>
-                                                                <td>
-                                                                    <Link to={`/admin/members/edit/${member.id}`} className='btn btn-primary btn-sm'>Edit</Link>
-                                                                    <Link onClick={() => deleteMember(member.id)} to="#" className='btn btn-secondary btn-sm ms-2'>Delete</Link>
-                                                                </td>
-                                                            </tr>
-                                                        )
-                                                    })
-                                                }
-                                            </tbody>
-                                        </table>
+            <main className='member-table'>
+                <div className='container py-5'>
+                    <div className='row'>
+                        <div className='col-md-3'>
+                            {/*Sidebar*/}
+                            <Sidebar/>
+                        </div>
+                        <div className='col-md-9'>
+                            {/*Dashboard*/}
+                            <div className='card shadow border-0'>
+                                <div className='card-body p-4'>
+                                    <div className='d-flex justify-content-between'>
+                                        <h4 className='h5'>Members</h4>
+                                        <Link to="/admin/members/create" className='btn btn-primary'>Create</Link>
                                     </div>
+                                    <hr />
+                                    <table className='table table-striped'>
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Designation</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                members && members.map(member => {
+                                                    return(
+                                                        <tr key={`member-${member.id}`}>
+                                                            <td>{member.id}</td>
+                                                            <td>{member.name}</td>
+                                                            <td className='members-star'>{member.job_title}</td>
+                                                            <td>
+                                                                {
+                                                                    (member.status == 1) ? 'Active' : 'Block'
+                                                                }
+                                                            </td>
+                                                            <td>
+                                                                <Link to={`/admin/members/edit/${member.id}`} className='btn btn-primary btn-sm'>Edit</Link>
+                                                                <Link onClick={() => deleteMember(member.id)} to="#" className='btn btn-secondary btn-sm ms-2'>Delete</Link>
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                })
+                                            }
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </main>
-            <Footer/>
+                </div>
+            </main>
         </>
     )
 }

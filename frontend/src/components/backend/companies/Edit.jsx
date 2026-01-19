@@ -107,8 +107,6 @@ const Settings = () => {
 
     return (
         <>
-            <Header />
-
             <main>
                 <div className="container py-5">
                     <div className="row">
@@ -200,8 +198,6 @@ const Settings = () => {
                     </div>
                 </div>
             </main>
-
-            <Footer />
         </>
     );
 };
