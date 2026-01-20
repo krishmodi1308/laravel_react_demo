@@ -41,6 +41,10 @@ $md: 768px;
 $lg: 992px;
 $xl: 1200px;
 
+$btn-padding-y-sm: 0.25rem;
+$btn-padding-x-sm: 0.5rem;
+$btn-font-size-sm: 0.8rem;
+
 @mixin respond-max($breakpoint) {
   @media (max-width: $breakpoint) {
     @content;
@@ -73,11 +77,23 @@ $xl: 1200px;
   color: $text-white;
 }
 
+@mixin button-size($padding, $font-size, $border-radius: 0.25rem) {
+  padding: $padding;
+  font-size: $font-size;
+  border-radius: $border-radius;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap');
 
 body {
   font-family: "Rubik", sans-serif;
   color: $text-color;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+  text-align: left;
 }
 
 h1 { font-size: $h1-size; }
@@ -156,6 +172,9 @@ header {
     border-color: $primary-color !important;
     color: $text-white !important;
   }
+  &.btn-sm {
+    @include button-size(0.25rem 0.5rem, 0.875rem);
+  }
 }
 
 .btn-secondary {
@@ -168,6 +187,9 @@ header {
     background-color: $secondary-color !important;
     border-color: $secondary-color !important;
     color: $text-white !important;
+  }
+  &.btn-sm {
+    @include button-size(0.25rem 0.5rem, 0.875rem);
   }
 }
 
@@ -794,6 +816,8 @@ footer {
     background-color: transparent !important;
     color: $dm-text !important;
     border-color: $dm-border !important;
+    vertical-align: middle;
+    text-align: left;
   }
 
   .table-striped tbody tr:nth-of-type(odd) {
