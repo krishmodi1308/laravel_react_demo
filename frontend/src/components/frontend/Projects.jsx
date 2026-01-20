@@ -4,8 +4,12 @@ import Footer from "../common/Footer.jsx";
 import Hero from "../common/Hero.jsx";
 import {apiUrl, fileUrl} from "../common/http.jsx";
 import {Link} from "react-router-dom";
+import {useCompany} from "../../context/CompanyContext.jsx";
 
 const Projects = () => {
+    const company = useCompany();
+    if (!company) return null;
+
     const [projects, setProjects] = useState([]);
     const fetchAllProject = async () => {
         const res = await fetch(apiUrl+'get-projects',{
@@ -23,7 +27,7 @@ const Projects = () => {
             <Header/>
             <main>
                 <Hero preHeading='Quality. Integrity. Value.' heading='Our Projects'
-                      text='We excel at transforming visions into reality <br/> through outstanding craftsmanship and precise.'/>
+                      text='We excel at transforming visions into reality <br/> through outstanding craftsmanship and precise.' bgImage={company.other_page_image}/>
 
                 <section className='section-3 bg-light futuristic-services py-5'>
                     <div className='container py-5'>

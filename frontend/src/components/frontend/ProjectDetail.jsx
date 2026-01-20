@@ -5,8 +5,12 @@ import Hero from "../common/Hero.jsx";
 import {apiUrl, fileUrl} from "../common/http.jsx";
 import {Link, useParams} from "react-router-dom";
 import Testimonials from "../common/Testimonials.jsx";
+import {useCompany} from "../../context/CompanyContext.jsx";
 
 const ProjectDetail = () => {
+    const company = useCompany();
+    if (!company) return null;
+
     const params = useParams();
     const [project, setProject] = useState([]);
     const [projects, setProjects] = useState([]);
@@ -37,7 +41,7 @@ const ProjectDetail = () => {
         <>
             <Header/>
                 <main>
-                    <Hero preHeading='Quality. Integrity. Value.' heading={`${project.title}`} text=''/>
+                    <Hero preHeading='Quality. Integrity. Value.' heading={`${project.title}`} text='' bgImage={company.other_page_image}/>
                 </main>
                 <section className='section-10'>
                     <div className='container-fluid py-5 bg-light'>

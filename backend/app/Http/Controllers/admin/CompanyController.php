@@ -108,6 +108,43 @@ class CompanyController extends Controller
             }
         }
 
+        if ($request->other_page_image_id > 0) {
+            $oldOtherPageImage = $company->other_page_image;
+            $tempImage = TempImage::find($request->other_page_image_id);
+
+            if ($tempImage != null) {
+                $extArray = explode('.', $tempImage->name);
+                $ext = end($extArray);
+
+                $fileName = strtotime('now') . '_other_' . $company->id . '.' . $ext;
+
+                $originalDir = public_path('uploads/temp');
+                if (!File::exists($originalDir)) {
+                    File::makeDirectory($originalDir, 0755, true);
+                }
+
+                $destDir = public_path('uploads/companies');
+                if (!File::exists($destDir)) {
+                    File::makeDirectory($destDir, 0755, true);
+                }
+
+                $sourcePath = $originalDir . '/' . $tempImage->name;
+                $destPath   = $destDir . '/' . $fileName;
+
+                $manager = new ImageManager(Driver::class);
+                $image = $manager->read($sourcePath);
+                $image->scaleDown(1200);
+                $image->save($destPath);
+
+                $company->other_page_image = $fileName;
+                $company->save();
+
+                if ($oldOtherPageImage != null) {
+                    File::delete($destDir . '/' . $oldOtherPageImage);
+                }
+            }
+        }
+
         return response()->json([
             'status' => true,
             'message' => 'Company updated successfully!'

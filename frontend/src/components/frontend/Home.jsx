@@ -25,7 +25,6 @@ const Home = () => {
         const fetchSliders = async () => {
             try {
                 const res = await api.get('get-sliders');
-                console.log(res.data);
                 if (res.data.status && Array.isArray(res.data.data)) {
                     setSliders(res.data.data);
                 }

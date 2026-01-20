@@ -6,8 +6,12 @@ import MemberImg from "../../assets/images/pexels-sindre-fs-1040880.jpg";
 import Hero from "../common/Hero.jsx";
 import Testimonials from "../common/Testimonials.jsx";
 import {apiUrl, fileUrl} from "../common/http.jsx";
+import {useCompany} from "../../context/CompanyContext.jsx";
 
 const About = () => {
+    const company = useCompany();
+    if (!company) return null;
+
     const [members, setMembers] = useState([]);
     const fetchLatestMember = async () => {
         const res = await fetch(apiUrl+'get-members',{
@@ -25,7 +29,7 @@ const About = () => {
             <Header/>
             <main>
                 <Hero preHeading='Quality. Integrity. Value.' heading='About Us'
-                      text='We excel at transforming visions into reality <br/> through outstanding craftsmanship and precise.'/>
+                      text='We excel at transforming visions into reality <br/> through outstanding craftsmanship and precise.' bgImage={company.other_page_image}/>
 
                 <AboutNew/>
 
