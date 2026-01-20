@@ -4,8 +4,12 @@ import Footer from "../common/Footer.jsx";
 import Hero from "../common/Hero.jsx";
 import {apiUrl, fileUrl} from "../common/http.jsx";
 import {Link} from "react-router-dom";
+import {useCompany} from "../../context/CompanyContext.jsx";
 
 const Services = () => {
+    const company = useCompany();
+    if (!company) return null;
+
     const [services, setServices] = useState([]);
     const fetchAllService = async () => {
         const res = await fetch(apiUrl+'get-services',{
@@ -22,7 +26,7 @@ const Services = () => {
         <>
             <Header/>
                 <Hero preHeading='Quality. Integrity. Value.' heading='Services'
-                      text='We excel at transforming visions into reality <br/> through outstanding craftsmanship and precise.'/>
+                      text='We excel at transforming visions into reality <br/> through outstanding craftsmanship and precise.' bgImage={company.other_page_image}/>
 
                 <section className='section-3 futuristic-services bg-light py-5'>
                     <div className='container py-5'>

@@ -9,46 +9,53 @@ import { useCompany } from "../../context/CompanyContext.jsx";
 
 const ContactUs = () => {
     const company = useCompany();
-    if (!company) return null;
 
     const {
         register,
         handleSubmit,
-        watch,
         reset,
         formState: { errors },
-    } = useForm()
+    } = useForm();
 
     const [isDisable, setisDisable] = useState(false);
 
+    if (!company) {
+        return null;
+    }
+
     const onSubmit = async (data) => {
         setisDisable(true);
-        const res = await fetch(apiUrl+'contact-now',{
-            method : 'POST',
-            headers: {
-                'content-type' : 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-        const result = await res.json();
-        console.log(result);
 
-        if (result.status == true) {
+        try {
+            const res = await fetch(apiUrl + 'contact-now', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await res.json();
+
+            if (result.status === true) {
+                toast.success(result.message);
+                reset();
+            } else {
+                toast.error(result.message);
+            }
+        } catch (err) {
+            toast.error("Something went wrong");
+        } finally {
             setisDisable(false);
-            toast.success(result.message);
-            reset();
-        } else {
-            setisDisable(false);
-            toast.error(result.message);
         }
-    }
+    };
 
     return (
         <>
             <Header/>
             <main>
                 <Hero preHeading='Quality. Integrity. Value.' heading='Contact Us'
-                      text='We excel at transforming visions into reality <br/> through outstanding craftsmanship and precise.'/>
+                      text='We excel at transforming visions into reality <br/> through outstanding craftsmanship and precise.' bgImage={company.other_page_image}/>
 
                 <section className='section-9 py-5'>
                     <div className='container'>

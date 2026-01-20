@@ -14,6 +14,7 @@ const Settings = () => {
     const [isDisable, setIsDisable] = useState(false);
     const [imageId, setImageId] = useState(null);
     const [company, setCompany] = useState(null);
+    const [otherPageImageId, setOtherPageImageId] = useState(null);
 
     const navigate = useNavigate();
 
@@ -64,6 +65,7 @@ const Settings = () => {
 
             const payload = { ...data };
             if (imageId) payload.imageId = imageId;
+            if (otherPageImageId) payload.other_page_image_id = otherPageImageId;
 
             const res = await api.put(`companies/${COMPANY_ID}`, payload);
 
@@ -97,6 +99,32 @@ const Settings = () => {
             } else {
                 setImageId(res.data.data.id);
                 toast.success("Logo uploaded");
+            }
+        } catch {
+            toast.error("Image upload failed");
+        } finally {
+            setIsDisable(false);
+        }
+    };
+
+    const handleOtherPageImage = async (e) => {
+        if (!e.target.files.length) return;
+
+        try {
+            const formData = new FormData();
+            formData.append("image", e.target.files[0]);
+
+            setIsDisable(true);
+
+            const res = await api.post("temp-images", formData, {
+                headers: { "Content-Type": "multipart/form-data" },
+            });
+
+            if (!res.data.status) {
+                toast.error(res.data.errors?.image?.[0] || "Upload failed");
+            } else {
+                setOtherPageImageId(res.data.data.id);
+                toast.success("Other page image uploaded");
             }
         } catch {
             toast.error("Image upload failed");
@@ -171,6 +199,25 @@ const Settings = () => {
                                         {company?.image && (
                                             <div className="mb-3">
                                                 <img src={`${fileUrl}uploads/companies/${company.image}`} alt="Logo" style={{ maxHeight: 80 }}/>
+                                            </div>
+                                        )}
+
+                                        <div className="mb-3">
+                                            <label className="form-label">Hero image (for about, services, projects, etc pages)</label>
+                                            <input
+                                                type="file"
+                                                className="form-control"
+                                                onChange={handleOtherPageImage}
+                                            />
+                                        </div>
+
+                                        {company?.other_page_image && (
+                                            <div className="mb-3">
+                                                <img
+                                                    src={`${fileUrl}uploads/companies/${company.other_page_image}`}
+                                                    alt="Other Page"
+                                                    style={{ maxHeight: 80 }}
+                                                />
                                             </div>
                                         )}
 

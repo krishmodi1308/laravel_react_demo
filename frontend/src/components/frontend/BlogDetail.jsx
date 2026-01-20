@@ -4,9 +4,11 @@ import Hero from "../common/Hero.jsx";
 import Footer from "../common/Footer.jsx";
 import {Link, useParams} from "react-router-dom";
 import {apiUrl, fileUrl} from "../common/http.jsx";
-
+import {useCompany} from "../../context/CompanyContext.jsx";
 
 const BlogDetail = () => {
+    const company = useCompany();
+    if (!company) return null;
 
     const params = useParams();
     const [article, setArticle] = useState([]);
@@ -39,7 +41,7 @@ const BlogDetail = () => {
             <Header/>
                 <main>
                     <Hero preHeading='Quality. Integrity. Value.' heading='Blog & News'
-                          text=''/>
+                          text='' bgImage={company.other_page_image}/>
                 </main>
 
                 <div className='container py-5'>
